@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contactsOps';
+import { deleteContact } from '/src/redux/contacts/operations.js';
 import { IoIosPerson } from 'react-icons/io';
 import { MdOutlinePhoneIphone } from 'react-icons/md';
 import css from './Contact.module.css';
