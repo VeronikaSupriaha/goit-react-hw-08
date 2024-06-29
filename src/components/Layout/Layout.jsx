@@ -1,12 +1,11 @@
 import React from 'react';
 import AppBar from '/src/components/AppBar/AppBar';
-import { Outlet } from 'react-router-dom';
 
-export const Layout = () => {
+export const Layout = ({ children }) => {
   return (
     <div>
-      <AppBar></AppBar>
-      <Outlet></Outlet>
+      <AppBar> </AppBar>
+      {children}
     </div>
   );
 };

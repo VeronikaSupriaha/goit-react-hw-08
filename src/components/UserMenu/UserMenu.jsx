@@ -3,16 +3,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '/src/redux/auth/operations.js';
 import { selectUser } from '../../redux/auth/selectors';
 
-const UserMenu = () => {
-  const dispatch = useDispatch();
+export default function UserMenu() {
+  const dispath = useDispatch();
   const user = useSelector(selectUser);
+
+  const handleClick = () => {
+    dispath(logout());
+  };
 
   return (
     <div>
-      <p> Welcome, {user.name} </p>
-      <button onClick={() => dispatch(logout())}>Logout</button>
+      <p>Welcome, {user.name}!</p>
+      <button onClick={handleClick} type="button">
+        Logout
+      </button>
     </div>
   );
-};
-
-export default UserMenu;
+}
