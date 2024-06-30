@@ -12,6 +12,6 @@ const filtersSlice = createSlice({
   },
 });
 
-export const setSearch = filtersSlice.actions;
+export const { setSearch } = filtersSlice.actions;
 
 export default filtersSlice.reducer;

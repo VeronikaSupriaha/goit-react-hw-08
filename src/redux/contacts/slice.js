@@ -10,7 +10,7 @@ const contactsSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(fetchContacts.pending, state => {
-        state.error = false;
+        state.error = null;
         state.loading = true;
       })
       .addCase(fetchContacts.fulfilled, (state, action) => {
@@ -19,10 +19,10 @@ const contactsSlice = createSlice({
       })
       .addCase(fetchContacts.rejected, state => {
         state.loading = false;
-        state.error = true;
+        state.error = true; // або використовуйте повідомлення про помилку
       })
       .addCase(addContact.pending, state => {
-        state.error = false;
+        state.error = null;
         state.loading = true;
       })
       .addCase(addContact.fulfilled, (state, action) => {
@@ -34,7 +34,7 @@ const contactsSlice = createSlice({
         state.error = true;
       })
       .addCase(deleteContact.pending, state => {
-        state.error = false;
+        state.error = null;
         state.loading = true;
       })
       .addCase(deleteContact.fulfilled, (state, action) => {
@@ -67,6 +67,7 @@ export const selectFilteredContacts = createSelector(
     if (!filter) {
       return contacts;
     }
+
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter.toLowerCase())
     );
