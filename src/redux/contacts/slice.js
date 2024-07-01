@@ -1,6 +1,4 @@
-import { createSelector, createSlice } from '@reduxjs/toolkit';
-import { selectContacts } from './selectors.js';
-import { selectFilter } from '../filters/selectors.js';
+import { createSlice } from '@reduxjs/toolkit';
 import { fetchContacts, addContact, deleteContact } from './operations.js';
 import { logout } from '/src/redux/auth/operations';
 
@@ -19,7 +17,7 @@ const contactsSlice = createSlice({
       })
       .addCase(fetchContacts.rejected, state => {
         state.loading = false;
-        state.error = true; // або використовуйте повідомлення про помилку
+        state.error = true;
       })
       .addCase(addContact.pending, state => {
         state.error = null;
@@ -60,18 +58,5 @@ const contactsSlice = createSlice({
       });
   },
 });
-
-export const selectFilteredContacts = createSelector(
-  [selectContacts, selectFilter],
-  (contacts, filter) => {
-    if (!filter) {
-      return contacts;
-    }
-
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
-  }
-);
 
 export default contactsSlice.reducer;
